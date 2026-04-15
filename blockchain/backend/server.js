@@ -7,7 +7,7 @@ const port = 3003;
 const server = express();
 server.use(express.static('frontend'));
 server.use(onEachRequest);
-server.get('/api/artist/:id', onGetArtistById);
+server.get('/api/adressesBycurrency:id',onGetAdressesByCurrency);
 
 
 async function onGetAdressesByCurrency(request, response) {
