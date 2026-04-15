@@ -10,9 +10,9 @@ det er i parantes så den tages først */
 await db.query('drop table if exists transactions');
 await db.query('drop table if exists addresses');
 await db.query('drop table if exists pricepoint');
-await db.query('drop table if exists block');
+await db.query('drop table if exists blocks');
 await db.query('drop table if exists currency');
-await db.query('drop table if exists transfer');
+await db.query('drop table if exists transfers');
 
 // TODO: drop more tables, if they exist
 
@@ -70,13 +70,13 @@ await db.query(`
 
 await db.query(`
     insert into transactions(transaction_id, "hash", block_id)
-    values (201, 5ac6, 301),
-    (202, 78af, 302),
-    (203, 9cb6, 302),
-    (204, 04aa, 302),
-    (205, af78, 303),
-    (206, 9033, 303),
-    (207, acdf, 303)
+    values (201, '5ac6', 301),
+    (202, '78af', 302),
+    (203, '9cb6', 302),
+    (204, '04aa', 302),
+    (205, 'af78', 303),
+    (206, '9033', 303),
+    (207, 'acdf', 303)
 `);
 
 await db.query(`
@@ -92,25 +92,25 @@ await db.query(`
 
 await db.query(`
     insert into pricepoint("timestamp", usd_price, currency_id)
-    values(2026-03-01T06:00:00Z, 1 ,401),
-    (2026-03-03T06:00:00Z, 1 ,402),
-    (2026-03-09T06:00:00Z, 1 ,403)
+    values('2026-03-01T06:00:00Z', 1 ,401),
+    ('2026-03-03T06:00:00Z', 1 ,402),
+    ('2026-03-09T06:00:00Z', 1 ,403)
 `);
 
 await db.query(`
     insert into blocks(block_id, block_hash, "timestamp")
-    values (301, 000ffe7, 2026-03-01T07:30:00Z),
-    (302, 0002a81, 2026-03-03T14:00:00Z),
-    (303, 0003bb6, 2026-03-09T22:30:00Z)
+    values (301, '000ffe7', '2026-03-01T07:30:00Z'),
+    (302, '0002a81', '2026-03-03T14:00:00Z'),
+    (303, '0003bb6', '2026-03-09T22:30:00Z')
 `);
 
 await db.query(`
     insert into currency(currency_id, symbol, "name")
-    values(401, "ETH", "ether"),
-    (402, "LINK", "Chainlink"),
+    values(401, 'ETH', 'ether'),
+    (402, 'LINK', 'Chainlink'),
     (403, 'USDC', 'US coin')
 `);
-
+ 
 await db.query(`
     insert into transfers(transfer_id, sender_address_id, receiver_address_id, amount, currency_id, transaction_id)
     values(501, 107, 101, 5, 401, 201),

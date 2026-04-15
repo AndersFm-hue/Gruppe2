@@ -9,7 +9,6 @@ server.use(express.static('frontend'));
 server.use(onEachRequest);
 server.get('/api/adressesBycurrency:id',onGetAdressesByCurrency);
 
-
 async function onGetAdressesByCurrency(request, response) {
     const id = request.params.id;
     const dbResult = await db.query(`
