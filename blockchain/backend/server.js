@@ -10,6 +10,8 @@ server.use(onEachRequest);
 server.get('/api/artist/:id', onGetArtistById);
 
 
+
+
 async function onGetArtistById(request, response) {
     const id = request.params.id;
     const dbResult = await db.query(`
