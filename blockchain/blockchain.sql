@@ -54,3 +54,16 @@ values(501, 107, 101, 5, 401, 201),
 (509, 101, 105, 1, 401, 206),
 (510, 104, 106, 1, 402, 207),
 (511, 106, 104, 2390, 403, 207)
+
+
+
+--FUNKTIONERNE
+
+--onGetActiveAddresses
+select address_name
+from   addresses a
+join transfers t
+    on a.adress_id using sender_address_id
+    on a.address_id using receiver_address_id
+join currency using (currency_id) 
+where  currency.symbol = 'ETH' or currency.symbol = 'LINK' or currency.symbol = 'USDC'`, [address_name, symbol]);
